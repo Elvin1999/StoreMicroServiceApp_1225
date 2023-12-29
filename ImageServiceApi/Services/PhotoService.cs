@@ -22,7 +22,7 @@ namespace ImageServiceApi.Services
             _cloudinary = new Cloudinary(account);
         }
 
-        public string UploadImage(PhotoCreationDto dto)
+        public async Task<string> UploadImageAsync(PhotoCreationDto dto)
         {
             var file = dto.File;
             var uploadedResult = new ImageUploadResult();
@@ -34,7 +34,7 @@ namespace ImageServiceApi.Services
                     {
                         File = new FileDescription(file.Name, stream)
                     };
-                    uploadedResult=_cloudinary.Upload(uploadParams);
+                    uploadedResult=await _cloudinary.UploadAsync(uploadParams);
                     if(uploadedResult != null)
                     {
                         return uploadedResult.Url.ToString();

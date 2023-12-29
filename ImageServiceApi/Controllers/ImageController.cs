@@ -16,12 +16,12 @@ namespace ImageServiceApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post()
+        public async Task<IActionResult> Post()
         {
             var file = Request.Form.Files.GetFile("file");
             if (file != null && file.Length > 0)
             {
-                string result = _photoService.UploadImage(new Dtos.PhotoCreationDto { File = file });
+                string result = await _photoService.UploadImageAsync(new Dtos.PhotoCreationDto { File = file });
                 return Ok(result);
             }
             return BadRequest(new { message = "No File Received" });

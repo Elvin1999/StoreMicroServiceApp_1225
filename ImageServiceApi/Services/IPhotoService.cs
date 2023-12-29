@@ -4,6 +4,6 @@ namespace ImageServiceApi.Services
 {
     public interface IPhotoService
     {
-        string UploadImage(PhotoCreationDto dto);
+        Task<string> UploadImageAsync(PhotoCreationDto dto);
     }
 }
