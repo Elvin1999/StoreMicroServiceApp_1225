@@ -1,0 +1,16 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/image",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 10604
+        }
+      ],
+      "UpstreamPathTemplate": "/i",
+      "UpstreamHttpMethod": [ "Post" ]
+    }
+  ]
+}

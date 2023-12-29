@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreWebUI", "StoreWebUI\St
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageServiceApi", "ImageServiceApi\ImageServiceApi.csproj", "{FBB29976-552A-4456-BE0C-57953FE448C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{5579BF0F-A5D3-4C1A-B945-6AF90D634AC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{FBB29976-552A-4456-BE0C-57953FE448C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBB29976-552A-4456-BE0C-57953FE448C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBB29976-552A-4456-BE0C-57953FE448C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5579BF0F-A5D3-4C1A-B945-6AF90D634AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5579BF0F-A5D3-4C1A-B945-6AF90D634AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5579BF0F-A5D3-4C1A-B945-6AF90D634AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5579BF0F-A5D3-4C1A-B945-6AF90D634AC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -40,6 +46,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{0727E856-E3F8-41F4-B579-E89E39D5DD10} = {E68CF48E-EDAB-4DE0-BFA0-012AF0F937BC}
 		{FBB29976-552A-4456-BE0C-57953FE448C6} = {BC8B040B-F718-4AAF-949C-E15346CC34EA}
+		{5579BF0F-A5D3-4C1A-B945-6AF90D634AC5} = {896EBEF8-90D2-4212-B251-6AFABBB4A04C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95BD3666-7807-4259-A736-A6A14FD2F199}

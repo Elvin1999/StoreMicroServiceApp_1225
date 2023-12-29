@@ -1,24 +1,27 @@
-using ImageServiceApi.Services;
-using Microsoft.AspNetCore.Http.Features;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
+IConfiguration configuration=new ConfigurationBuilder()
+    .AddJsonFile("ocelot.json")
+    .Build();
+
+
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
+
+builder.Services.AddOcelot(configuration);
+
+builder.WebHost.UseUrls("https://*:22950");
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.WebHost.UseUrls("https://*:10604");
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IPhotoService, PhotoService>();
-
-builder.Services.Configure<FormOptions>(o =>
-{
-    o.ValueLengthLimit = int.MaxValue;
-    o.MultipartBodyLengthLimit = int.MaxValue;
-    o.MemoryBufferThreshold = int.MaxValue;
-});
 
 var app = builder.Build();
 
@@ -34,5 +37,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("corsapp");
+await app.UseOcelot();
 
 app.Run();
