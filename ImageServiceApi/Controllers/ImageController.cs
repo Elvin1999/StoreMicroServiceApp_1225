@@ -22,6 +22,7 @@ namespace ImageServiceApi.Controllers
             if (file != null && file.Length > 0)
             {
                 string result = await _photoService.UploadImageAsync(new Dtos.PhotoCreationDto { File = file });
+
                 return Ok(result);
             }
             return BadRequest(new { message = "No File Received" });
