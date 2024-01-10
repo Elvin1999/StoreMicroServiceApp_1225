@@ -21,7 +21,7 @@ namespace ProductService.Repository
 
         public async Task<IEnumerable<Product>> GetAll()
         {
-            return await _context.Products.ToListAsync();   
+            return await _context.Products.ToListAsync();
         }
 
         public async Task<Product> GetByID(int id)
@@ -29,10 +29,12 @@ namespace ProductService.Repository
             return await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-
         public Task Update(Product product)
         {
-            throw new NotImplementedException();
+            return Task.Run(() =>
+             {
+                 _context.Products.Update(product);
+             });
         }
     }
 }

@@ -10,9 +10,9 @@
     </section>
     <section>
         <label>Volume</label>
-        <input id="productId" disabled class="form-control" type="number" placeholder="Like...2.55" />
+        <input id="volumeId" class="form-control" type="number" placeholder="Like...2.55" />
     </section>
-    <a class="btn btn-outline-primary">Get Barcode</a>
+    <a onclick="GetBarcode()" class="btn btn-outline-primary">Get Barcode</a>
     <section>
         <span>Barcode for PRINT : </span>
         <span id="result"></span>
@@ -27,7 +27,7 @@
 <section id="p-info"></section>
 
 <section style="width:50%;margin:auto;margin-top:50px;">
-    <a class="btn btn-outline-primary">Show All Products</a>
+    <a onclick="CallGetAll()" class="btn btn-outline-primary">Show All Products</a>
     <a class="btn btn-outline-primary" href="/home/add">Add Product</a>
     <a class="btn btn-outline-primary">Update</a>
 </section>

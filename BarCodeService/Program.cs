@@ -1,25 +1,24 @@
+using BarCodeService.DataContext;
+using BarCodeService.Repository;
 using Microsoft.EntityFrameworkCore;
-using ProductService.Data;
-using ProductService.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.WebHost.UseUrls("https://*:10601;");
-
+builder.WebHost.UseUrls("https://*:10602;");
 builder.Services.AddControllers();
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddScoped<IBarcodeRepository, BarcodeRepository>();
 
 var con = builder.Configuration.GetConnectionString("myconn");
-builder.Services.AddDbContext<ProductContext>(opt =>
+builder.Services.AddDbContext<BarCodeContext>(opt =>
 {
     opt.UseSqlServer(con);
 });
+
 
 var app = builder.Build();
 
