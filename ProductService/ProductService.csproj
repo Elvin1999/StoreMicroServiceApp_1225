@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RabbitMQService\RabbitMQService.csproj" />
     <ProjectReference Include="..\StoreWebUI\StoreWebUI.csproj" />
   </ItemGroup>
 

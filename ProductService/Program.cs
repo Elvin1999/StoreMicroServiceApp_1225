@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using ProductService.Data;
 using ProductService.Repository;
 using ProductService.Services;
+using RabbitMQService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IQueueService, QueueService>();
 builder.Services.AddScoped<IProductExtentionService, ProductExtentionService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

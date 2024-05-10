@@ -5,6 +5,7 @@ using ProductService.Dtos;
 using ProductService.Entities;
 using ProductService.Repository;
 using ProductService.Services;
+using RabbitMQService;
 
 namespace ProductService.Controllers
 {
@@ -15,12 +16,14 @@ namespace ProductService.Controllers
         private readonly IProductRepository _productRepository;
         private readonly IProductExtentionService _productService;
         private readonly IMapper _mapper;
+        private readonly IQueueService _queueService;
 
-        public ProductController(IProductRepository productRepository, IMapper mapper, IProductExtentionService productService)
+        public ProductController(IProductRepository productRepository, IMapper mapper, IProductExtentionService productService, IQueueService queueService)
         {
             _productRepository = productRepository;
             _mapper = mapper;
             _productService = productService;
+            _queueService = queueService;
         }
 
         [HttpGet("GetImage/{id}")]
@@ -44,6 +47,11 @@ namespace ProductService.Controllers
             var item = _mapper.Map<Product>(productDto);
             await _productRepository.AddProduct(item);
             var dto = _mapper.Map<ProductDto>(item);
+            //Add image path to queue with new channel like (product-queue-ID);
+            var message = item.ImageUrl;
+            var queueName = $"product-queue-{dto.Id}";
+            _queueService.PublishMessageToQueue(queueName, message);
+
             return dto;
         }
     }

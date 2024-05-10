@@ -1,5 +1,6 @@
 
 using Microsoft.EntityFrameworkCore;
+using RabbitMQService;
 using SearchService.DataContext;
 using SearchService.Repository;
 using SearchService.Services;
@@ -14,6 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IQueueService, QueueService>();
 builder.Services.AddScoped<ISearchRepository, SearchRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 

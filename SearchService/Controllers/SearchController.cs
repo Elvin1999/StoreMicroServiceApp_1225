@@ -40,8 +40,7 @@ namespace SearchService.Controllers
                 };
 
                 var productId = item.ProductId;
-                var result=await _productService.GetProductImagePathAsync(productId);
-                dto.ImageUrl = result;
+                dto.ImageUrl=await _productService.GetProductImagePathAsync(productId);
 
                 return Ok(dto);
             }

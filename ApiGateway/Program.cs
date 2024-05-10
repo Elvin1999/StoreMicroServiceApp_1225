@@ -14,7 +14,7 @@ builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
 
 builder.Services.AddOcelot(configuration);
 
-builder.WebHost.UseUrls("https://*:22950");
+builder.WebHost.UseUrls("https://*:22955");
 
 // Add services to the container.
 

@@ -12,7 +12,7 @@ function Search() {
     }
     else {
         $.ajax({
-            url: `https://localhost:22950/s/${value}`,
+            url: `https://localhost:22955/s/${value}`,
             method: "GET",
             success: function (data) {
                 console.log(data);
@@ -53,7 +53,7 @@ function addProduct() {
         console.log(obj);
 
         $.ajax({
-            url: 'https://localhost:22950/p',
+            url: 'https://localhost:22955/p',
             method: "POST",
             data: JSON.stringify(obj),
             contentType: "application/json;charset=utf-8",
@@ -77,7 +77,7 @@ function getUploadedImage() {
     var formData = new FormData();
     formData.append("file", file);
     return $.ajax({
-        url: 'https://localhost:22950/i',
+        url: 'https://localhost:22955/i',
         type: "POST",
         data: formData,
         processData: false,
@@ -98,7 +98,7 @@ var products = [];
 
 function CallGetAll() {
     $.ajax({
-        url: 'https://localhost:22950/p',
+        url: 'https://localhost:22955/p',
         method: "GET",
         success: function (data) {
             products = data;
@@ -141,7 +141,7 @@ function GetBarcode() {
     console.log(obj);
 
     $.ajax({
-        url: 'https://localhost:22950/b',
+        url: 'https://localhost:22955/b',
         method: "POST",
         data: JSON.stringify(obj),
         contentType: "application/json;charset=utf-8",
