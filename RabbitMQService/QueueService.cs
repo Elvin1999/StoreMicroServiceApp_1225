@@ -23,7 +23,7 @@ namespace RabbitMQService
 
             var consumer = new EventingBasicConsumer(channel);
 
-            var data = channel.BasicGet(queueName, true);
+            var data = channel.BasicGet(queueName, false);
             var returnedResult=Encoding.UTF8.GetString(data.Body.ToArray());
             return returnedResult;
         }
